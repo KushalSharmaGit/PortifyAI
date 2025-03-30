@@ -1,40 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { CheckCircle, Code, Layers, Zap } from 'lucide-react';
+import { HashLink } from "react-router-hash-link";
+import { useNavigate } from 'react-router-dom';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import portfolioPreview from '@/assets/portfolio-preview.png';
 
 function LandingPage() {
+  const navigate = useNavigate();
+  const handleStarted = () => {
+    if(localStorage.getItem("token")) navigate("/dashboard");
+    else navigate("/login");
+  }
   return (
     <div className="flex min-h-screen flex-col dark">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Layers className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">PortfolioAI</span>
-          </div>
-          <nav className="hidden md:flex gap-6">
-            <Link to="#features" className="text-sm font-medium transition-colors hover:text-primary">
-              Features
-            </Link>
-            <Link to="#how-it-works" className="text-sm font-medium transition-colors hover:text-primary">
-              How It Works
-            </Link>
-            <Link to="#examples" className="text-sm font-medium transition-colors hover:text-primary">
-              Examples
-            </Link>
-            <Link to="#pricing" className="text-sm font-medium transition-colors hover:text-primary">
-              Pricing
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Link to="/login" className="text-sm font-medium transition-colors hover:text-primary">
-              Sign In
-            </Link>
-            <Button>Get Started</Button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="flex-1">
         <section className="relative w-full overflow-hidden py-20 md:py-32 lg:py-40 xl:py-48">
@@ -71,26 +53,12 @@ function LandingPage() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mt-2">
-                  <Button size="lg" className="text-base px-8 h-12">
+                  <Button size="lg" className="text-base px-8 h-12 hover:cursor-pointer" onClick={handleStarted}>
                     Get Started Free
                   </Button>
-                  <Button size="lg" variant="outline" className="text-base px-8 h-12">
+                  <Button size="lg" variant="outline" className="text-base px-8 h-12 hover:cursor-pointer" onClick={() => window.scrollTo({ top: document.querySelector("#examples").offsetTop, behavior: "smooth" })}>
                     See Examples
                   </Button>
-                </div>
-
-                <div className="flex items-center pt-4 text-muted-foreground text-sm">
-                  <div className="flex -space-x-2 mr-3">
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="h-8 w-8 rounded-full border-2 border-background bg-muted-foreground/20"
-                      ></div>
-                    ))}
-                  </div>
-                  <span>
-                    Join <span className="font-medium text-foreground">2,000+</span> professionals using PortfolioAI
-                  </span>
                 </div>
               </div>
 
@@ -106,7 +74,8 @@ function LandingPage() {
                   </div>
                   <div className="relative aspect-[16/10] bg-gray-200">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-gray-500">Portfolio Preview</span>
+                      {/* <span className="text-gray-500">Portfolio Preview</span> */}
+                      <img src={portfolioPreview} alt="Portfolio Preview" className="w-full h-full object-cover" />
                     </div>
                   </div>
                 </div>
@@ -414,10 +383,14 @@ function LandingPage() {
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-primary" />
+                    <span>Custom domains (For First 100)</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                     <span>Community support</span>
                   </li>
                 </ul>
-                <Button className="mt-8" variant="outline">
+                <Button className="mt-8 hover:cursor-pointer" variant="outline" onClick={() => (navigate('/commingsoon'))}>
                   Get Started
                 </Button>
               </div>
@@ -455,7 +428,7 @@ function LandingPage() {
                     <span>Priority support</span>
                   </li>
                 </ul>
-                <Button className="mt-8">Get Started</Button>
+                <Button className="mt-8 hover:cursor-pointer" onClick={() => (navigate('/commingsoon'))}>Get Started</Button>
               </div>
               <div className="flex flex-col rounded-lg border bg-background p-6 shadow-sm">
                 <div className="space-y-2">
@@ -492,7 +465,7 @@ function LandingPage() {
                     <span>Dedicated support</span>
                   </li>
                 </ul>
-                <Button className="mt-8" variant="outline">
+                <Button className="mt-8 hover:cursor-pointer" variant="outline" onClick={() => (navigate('/commingsoon'))}>
                   Get Started
                 </Button>
               </div>
@@ -500,7 +473,7 @@ function LandingPage() {
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
+        <section className="w-full py-12 md:py-24 lg:py-32 text-primary">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -521,7 +494,8 @@ function LandingPage() {
                   <Button
                     type="submit"
                     variant="secondary"
-                    className="bg-background text-primary hover:bg-background/90"
+                    className="bg-muted text-primary hover:bg-background/90 hover:cursor-pointer"
+                    onClick={handleStarted}
                   >
                     Get Started
                   </Button>
@@ -533,30 +507,7 @@ function LandingPage() {
         </section>
       </main>
 
-      <footer className="w-full border-t bg-background py-6 md:py-12">
-        <div className="container flex flex-col items-center justify-center gap-4 px-4 md:px-6 md:flex-row md:justify-between">
-          <div className="flex items-center gap-2">
-            <Layers className="h-6 w-6 text-primary" />
-            <span className="text-lg font-bold">PortfolioAI</span>
-          </div>
-          <nav className="flex gap-4 sm:gap-6">
-            <Link to="/terms" className="text-sm hover:underline underline-offset-4">
-              Terms
-            </Link>
-            <Link to="/privacy" className="text-sm hover:underline underline-offset-4">
-              Privacy
-            </Link>
-            <Link to="/cookies" className="text-sm hover:underline underline-offset-4">
-              Cookies
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} PortfolioAI. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

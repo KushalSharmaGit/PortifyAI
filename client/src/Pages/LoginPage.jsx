@@ -1,16 +1,73 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Layers, Github, Twitter } from "lucide-react";
-import { Link } from "react-router-dom"; // or your preferred routing library
- 
+import { Layers } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom"; // or your preferred routing library
+import { toast } from 'react-toastify';
+
 function LoginPage() {
+  const baseurl = import.meta.env.VITE_BASE_URL;
+  const navigate = useNavigate();
+  useEffect(() => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        toast("You are already logged in");
+        navigate("/");
+      }
+    }, []);
+  const [user, setUser]= useState({
+    "email": "",
+    "password":"",
+  })
+  const [isLogedin, setIsLogedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handelChange = (e) => {
+    const {name, value} = e.target;
+    console.log(name, value);
+    setUser((prev) => ({...prev, [name]: value}));
+    console.log(user);
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsLoading(true);
+    try {
+      const response= await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/login`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      if(!response.ok){
+        setIsLoading(false);
+        toast(response.error.message, {
+          type: "error",
+        });
+        return;
+      }
+      const data = await response.json();
+      localStorage.setItem('token', data.token);
+      toast("Login successful", {
+        type: "success",
+      });
+      navigate('/');
+    } catch (error) {
+      toast(error, {
+        type: "error",
+      });
+    }
+    
+  }
+
   return (
     <div className="flex min-h-screen flex-col dark">
       <div className="flex min-h-screen items-center justify-center px-4 py-12">
         <div className="grid w-full max-w-md gap-6">
           <div className="flex flex-col items-center space-y-2 text-center">
-            <Link href="/" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <Layers className="h-8 w-8 text-primary" />
               <span className="text-2xl font-bold">PortfolioAI</span>
             </Link>
@@ -22,26 +79,26 @@ function LoginPage() {
               <label htmlFor="email" className="text-sm font-medium leading-none">
                 Email
               </label>
-              <Input id="email" type="email" placeholder="name@example.com" autoComplete="email" />
+              <Input id="email" name="email" type="email" placeholder="name@example.com" autoComplete="email" value={user.email} onChange={handelChange} />
             </div>
             <div className="grid gap-2">
               <div className="flex items-center justify-between">
                 <label htmlFor="password" className="text-sm font-medium leading-none">
                   Password
                 </label>
-                <Link href="/forgot-password" className="text-sm text-primary hover:underline">
+                <Link to="/forgot-password" className="text-sm text-primary hover:underline">
                   Forgot password?
                 </Link>
               </div>
-              <Input id="password" type="password" placeholder="••••••••" autoComplete="current-password" />
+              <Input id="password" name="password" type="password" placeholder="••••••••" autoComplete="current-password" value={user.password} onChange={handelChange} />
             </div>
-            <Button type="submit" className="w-full">
-              Sign In
+            <Button type="submit" className="w-full" disabled={isLoading} onClick={handleSubmit}>
+                  {isLoading ? "Logging in..." : "Login"}
             </Button>
           </div>
           <div className="text-center text-sm">
             Don&apos;t have an account?{" "}
-            <Link href="/signup" className="text-primary hover:underline">
+            <Link to="/signup" className="text-primary hover:underline">
               Sign up
             </Link>
           </div>

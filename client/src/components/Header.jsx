@@ -1,16 +1,20 @@
-import React from 'react'
+import {React, useState} from 'react'
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { CheckCircle, Code, Layers, Zap } from 'lucide-react';
+import {  User, Layers } from 'lucide-react';
 import { HashLink } from "react-router-hash-link";
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const navigate = useNavigate();
+    const [toggle, setToggle] = useState(false);
     const handleStarted = () => {
-        if(localStorage.getItem("token")) navigate("/dashboard");
+        if(localStorage.getItem("token")) navigate("/create");
         else navigate("/login");
+    }
+    const handleLogOut = () => {
+      localStorage.clear('token');
+      setToggle(true);
     }
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -34,10 +38,20 @@ const Header = () => {
             </HashLink>
           </nav>
           <div className="flex items-center gap-4">
+            {localStorage.getItem('token') ? 
+            (<>
+            <User className="h-5 w-5" />
+            <Button className="hover:cursor-pointer" onClick={handleLogOut}>Log Out</Button>
+            </>
+            ) 
+            :
+            (<>
             <Link to="/login" className="text-sm font-medium transition-colors hover:text-primary">
               Sign In
             </Link>
             <Button className="hover:cursor-pointer" onClick={handleStarted}>Get Started</Button>
+            </> 
+            )}
           </div>
         </div>
       </header>

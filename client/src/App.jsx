@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import CommingSoon from './Pages/CommingSoon';
 import NotFound from './Pages/NotFound';
 import CreatePage from './Pages/CreatePage';
+import Dashboard from './Pages/Dashboard';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create" element={<CreatePage />} />
           <Route path="/commingsoon" element={<CommingSoon />} />
           <Route path="*" element={<NotFound />} />

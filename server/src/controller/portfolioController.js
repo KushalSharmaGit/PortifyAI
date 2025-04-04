@@ -18,7 +18,13 @@ const createPortfolio = asyncHandler ( async (req, res) => {
 })
 
 const viewPortfolio = async (req, res) => {
-
+    try {
+        const portfolio = await Portfolio.findById(req.params.id).lean();; 
+        res.status(200).json({"portfolio": portfolio});
+    } catch (error) {
+        console.error("Error fetching portfolio:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
 }
 
 const viewDashboard = async (req, res) => {

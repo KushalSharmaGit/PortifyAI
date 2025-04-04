@@ -14,7 +14,7 @@ const PortfolioSchema = new mongoose.Schema({
   twitter: { type: String, default: "" },
   github: { type: String, default: "" },
   linkedin: { type: String, default: "" },
-  approach: { type: String, default: "" },
+  approch: { type: String, default: "" },
   skills: { type: [String], default: [] },
   interests: { type: [String], default: [] },
   experience: [{
@@ -28,14 +28,13 @@ const PortfolioSchema = new mongoose.Schema({
   education: [{
     institution: String,
     degree: String,
-    fieldOfStudy: String,
+    field: String,
     startDate: Date,
     endDate: Date,
     description: String
   }],
   projects: [{
-    name: String,
-    description: String,
+    title: String,
     link: String,
     technologies: String,
     description:String,

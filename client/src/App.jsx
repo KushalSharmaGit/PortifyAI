@@ -8,6 +8,7 @@ import CommingSoon from './Pages/CommingSoon';
 import NotFound from './Pages/NotFound';
 import CreatePage from './Pages/CreatePage';
 import Dashboard from './Pages/Dashboard';
+import PortfolioOne from './Pages/PortfolioOne';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create" element={<CreatePage />} />
+          <Route path="/view/:id" element={<PortfolioOne />} />
           <Route path="/commingsoon" element={<CommingSoon />} />
           <Route path="*" element={<NotFound />} />
           {/* <Route path="/services" element={<ServicesPage />} />

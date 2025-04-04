@@ -2,14 +2,19 @@ const asyncHandler = require("express-async-handler");
 const Portfolio = require("../model/Portfolio");
 
 const createPortfolio = asyncHandler ( async (req, res) => {
-    const { title, description, name, role, bio, email, phone, location, website, twitter, github, linkedin, approach, skills, interests, experience, education, projects } = req.body;
+    const { title, description, name, role, bio, email, phone, location, website, twitter, github, linkedin, approch, skills, interests, experience, education, projects } = req.body;
     const userId = req.user.id;
     if (!name || !email) {
         return res.status(400).json({
             message: "Name and email are required"
         });
     }
-    const portfolio = await Portfolio.create({ userId, title, description, name, role, bio, email, phone, location, website, twitter, github, linkedin, approach, skills, interests, experience, education, projects });
+    const existingPortfolio = await Portfolio.findOne({ email: req.body.email });
+
+    if (existingPortfolio) {
+    return res.status(400).json({ message: "You can only create one Portfolio" });
+    }
+    const portfolio = await Portfolio.create({ userId, title, description, name, role, bio, email, phone, location, website, twitter, github, linkedin, approch, skills, interests, experience, education, projects });
     if(portfolio){
         res.status(201).json({"message": "Portfolio created successfully"});
     } else {

@@ -6,10 +6,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { useAnchorNavigation } from '@/hooks/useAnchorNavigation'
 
 const PortfolioOne = () => {
     const [portfolio, setPortfolio] = useState(null);
     const { id } = useParams();
+    useAnchorNavigation();
     
     useEffect(() => {
         const fetchPortfolios = async () => {
@@ -52,55 +54,30 @@ const PortfolioOne = () => {
         <div className="min-h-screen bg-background">
             {/* Header */}
             <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container flex h-16 items-center justify-between">
-                    <div className="font-bold text-xl">
-                        <Link to="/" className="flex items-center gap-2">
-                            <span>Portfolio</span>
-                        </Link>
-                    </div>
-                    <nav className="hidden md:flex gap-6">
-                        <Link to="#about" className="text-sm font-medium transition-colors hover:text-primary">
-                            About
-                        </Link>
-                        <Link to="#education" className="text-sm font-medium transition-colors hover:text-primary">
-                            Education
-                        </Link>
-                        <Link to="#projects" className="text-sm font-medium transition-colors hover:text-primary">
-                            Projects
-                        </Link>
-                        <Link to="#experience" className="text-sm font-medium transition-colors hover:text-primary">
-                            Experience
-                        </Link>
-                        <Link to="#contact" className="text-sm font-medium transition-colors hover:text-primary">
-                            Contact
-                        </Link>
-                    </nav>
-                    <Button variant="outline" size="sm" className="hidden md:flex">
-                        <Link to="#contact" className="flex items-center gap-2">
-                            <Mail className="h-4 w-4" />
-                            <span>Contact Me</span>
-                        </Link>
-                    </Button>
-                    <Button variant="ghost" size="sm" className="md:hidden">
-                        <span className="sr-only">Toggle menu</span>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="h-6 w-6"
-                        >
-                            <line x1="4" x2="20" y1="12" y2="12" />
-                            <line x1="4" x2="20" y1="6" y2="6" />
-                            <line x1="4" x2="20" y1="18" y2="18" />
-                        </svg>
-                    </Button>
+            <div className="container flex h-16 items-center justify-between">
+                <div className="font-bold text-xl">
+                <Link to="/" className="flex items-center gap-2">
+                    <span>PortfolioAI</span>
+                </Link>
                 </div>
+                <nav className="hidden md:flex gap-6">
+                <Link to="#about" className="text-sm font-medium transition-colors hover:text-primary">
+                    About
+                </Link>
+                <Link to="#education" className="text-sm font-medium transition-colors hover:text-primary">
+                    Education
+                </Link>
+                <Link to="#projects" className="text-sm font-medium transition-colors hover:text-primary">
+                    Projects
+                </Link>
+                <Link to="#experience" className="text-sm font-medium transition-colors hover:text-primary">
+                    Experience
+                </Link>
+                <Link to="#contact" className="text-sm font-medium transition-colors hover:text-primary">
+                    Contact
+                </Link>
+                </nav>
+            </div>
             </header>
 
             <main className="flex-1">
@@ -161,14 +138,14 @@ const PortfolioOne = () => {
                                     {portfolio.bio}
                                 </p>
                             </div>
-                            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
+                            <div className="mx-auto flex max-w-5xl items-center gap-6 py-12 lg:gap-12">
                                 <div className="flex flex-col justify-center space-y-4">
                                     <ul className="grid gap-6">
                                         <li>
                                             <div className="grid gap-1">
                                                 <h3 className="text-xl font-bold">My Approach</h3>
                                                 <p className="text-muted-foreground">
-                                                    {portfolio.approach}
+                                                    {portfolio.approch}
                                                 </p>
                                             </div>
                                         </li>

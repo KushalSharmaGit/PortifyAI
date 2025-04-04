@@ -7,7 +7,7 @@ const PortfolioSchema = new mongoose.Schema({
   name: { type: String, required: true },
   role: { type: String, default: "" },
   bio: { type: String, default: "" },
-  email: { type: String, required: true, unique: true },
+  email: { type: String, default: "" },
   phone: { type: String, default: "" },
   location: { type: String, default: "" },
   website: { type: String, default: "" },
@@ -36,6 +36,7 @@ const PortfolioSchema = new mongoose.Schema({
   projects: [{
     title: String,
     link: String,
+    image: String,
     technologies: String,
     description:String,
   }]

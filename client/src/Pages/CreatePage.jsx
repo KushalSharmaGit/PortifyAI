@@ -145,7 +145,7 @@ export default function CreatePortfolioPage() {
           navigate('/dashboard');
       } else {
         const errorData = await response.json();
-        toast("Failed to Create Portfolio",{
+        toast(errorData.message,{
           type: "error"
         })
         console.error("Failed to create Portfolio:", errorData.message);

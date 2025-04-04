@@ -177,7 +177,7 @@ function LandingPage() {
           </div>
         </section>
 
-        <section id="examples" className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
+        {/* <section id="examples" className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -345,7 +345,7 @@ function LandingPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section id="pricing" className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
           <div className="container px-4 md:px-6">
@@ -365,7 +365,7 @@ function LandingPage() {
                   <p className="text-muted-foreground">Perfect for beginners and students</p>
                 </div>
                 <div className="mt-4 flex items-baseline">
-                  <span className="text-4xl font-bold">$0</span>
+                  <span className="text-4xl font-bold">&#x20B9;0</span>
                   <span className="ml-1 text-muted-foreground">/month</span>
                 </div>
                 <ul className="mt-6 space-y-3">
@@ -403,7 +403,7 @@ function LandingPage() {
                   <p className="text-muted-foreground">For professionals and freelancers</p>
                 </div>
                 <div className="mt-4 flex items-baseline">
-                  <span className="text-4xl font-bold">$12</span>
+                  <span className="text-4xl font-bold">&#x20B9;49</span>
                   <span className="ml-1 text-muted-foreground">/month</span>
                 </div>
                 <ul className="mt-6 space-y-3">
@@ -436,7 +436,7 @@ function LandingPage() {
                   <p className="text-muted-foreground">For teams and agencies</p>
                 </div>
                 <div className="mt-4 flex items-baseline">
-                  <span className="text-4xl font-bold">$29</span>
+                  <span className="text-4xl font-bold">&#x20B9;129</span>
                   <span className="ml-1 text-muted-foreground">/month</span>
                 </div>
                 <ul className="mt-6 space-y-3">

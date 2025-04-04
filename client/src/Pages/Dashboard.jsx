@@ -78,7 +78,7 @@ const Dashboard = () => {
                       <div className="mt-4 space-y-2">
                        
                         <div className="flex justify-between">
-                          <p className="text-sm font-medium">{`${portfolio._id}.portfoliobuilder.com`}</p>
+                          <p className="text-sm font-medium"></p>
                           <Button variant="link" size="sm" className="h-auto p-0" onClick={() =>(navigate(`/view/${portfolio._id}`))}>
                             View <ArrowRight className="ml-1 h-3 w-3" />
                           </Button>

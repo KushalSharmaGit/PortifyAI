@@ -1,0 +1,36 @@
+const asyncHandler = require("express-async-handler");
+const Portfolio = require("../model/Portfolio");
+
+const createPortfolio = asyncHandler ( async (req, res) => {
+    const { title, description, name, role, bio, email, phone, location, website, twitter, github, linkedin, approach, skills, interests, experience, education, projects } = req.body;
+    const userId = req.user.id;
+    if (!name || !email) {
+        return res.status(400).json({
+            message: "Name and email are required"
+        });
+    }
+    const portfolio = await Portfolio.create({ userId, title, description, name, role, bio, email, phone, location, website, twitter, github, linkedin, approach, skills, interests, experience, education, projects });
+    if(portfolio){
+        res.status(201).json({"message": "Portfolio created successfully"});
+    } else {
+        res.status(400).json({"message":"Error Creating Portfolio"});
+    }
+})
+
+const viewPortfolio = async (req, res) => {
+
+}
+
+const viewDashboard = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const portfolio = await Portfolio.find({ userId }).select('_id title').lean(); 
+        res.status(200).json({"portfolios": portfolio});
+    } catch (error) {
+        console.error("Error fetching portfolio:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+
+module.exports = { createPortfolio, viewPortfolio, viewDashboard };

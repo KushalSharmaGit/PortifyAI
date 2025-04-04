@@ -43,6 +43,7 @@ app.get('/', async(req, res) =>{
     })
 })
 app.use("/api/user", require('./routes/userRoutes'));
+app.use("/api/portfolio", require('./routes/portfolioRoutes'));
 
 // Starting the server
 app.listen(port, () => {

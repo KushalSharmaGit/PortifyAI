@@ -1,15 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, Edit, Eye, Plus, Settings } from "lucide-react"
 import DashboardHeader from '../components/DashboardHeader'
 import { useNavigate } from 'react-router-dom'
+import portfolioPreview from '@/assets/portfolio-preview.png';
 
 const Dashboard = () => {
     const navigate = useNavigate()
     const handleCreatePortfolio = () => {
         navigate('/create')
     }
+    const [portfolios, setPortfolios] = useState([]);
+    useEffect(() => {
+      const fetchPortfolios = async () => {
+        try {
+          const response = await fetch(
+            `${import.meta.env.VITE_BASE_URL}/api/portfolio/dashboard`,
+            {
+              method: "GET",
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          );
+  
+          if (!response.ok) {
+            throw new Error(`HTTP Error! Status: ${response.status}`);
+          }
+  
+          const data = await response.json();
+          console.log("Fetched Portfolios:", data.portfolios);
+          setPortfolios(data.portfolios || []); // Ensure it's an array
+        } catch (error) {
+          console.error("Error fetching portfolios:", error);
+        }
+      };
+  
+      fetchPortfolios();
+    }, []);
   return (
     <div className="flex min-h-screen flex-col">
       <DashboardHeader />
@@ -25,64 +56,40 @@ const Dashboard = () => {
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {/* Portfolio Card 1 */}
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Personal Portfolio</CardTitle>
-                  <div className="flex space-x-2">
-                    <Button variant="ghost" size="icon">
-                      <Edit className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Eye className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Settings className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="aspect-video w-full overflow-hidden rounded-md bg-muted"></div>
-                  <div className="mt-4 space-y-2">
-                    <p className="text-sm text-muted-foreground">Last updated: 2 days ago</p>
-                    <div className="flex justify-between">
-                      <p className="text-sm font-medium">portfolio-name.portfoliobuilder.com</p>
-                      <Button variant="link" size="sm" className="h-auto p-0">
-                        View <ArrowRight className="ml-1 h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              {portfolios.map((portfolio) =>{
+                return(
+                    <Card>
+                      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                      <CardTitle className="text-sm font-medium">{portfolio.title}</CardTitle>
+                      <div className="flex space-x-2">
+                        <Button variant="ghost" size="icon">
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon">
+                          <Eye className="h-4 w-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon">
+                          <Settings className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="aspect-video w-full overflow-hidden rounded-md bg-muted"><img src={portfolioPreview} alt="Portfolio Preview" className="w-full h-full object-cover" /></div>
+                      <div className="mt-4 space-y-2">
+                       
+                        <div className="flex justify-between">
+                          <p className="text-sm font-medium">{`${portfolio._id}.portfoliobuilder.com`}</p>
+                          <Button variant="link" size="sm" className="h-auto p-0" onClick={() =>(navigate(`/view/${portfolio._id}`))}>
+                            View <ArrowRight className="ml-1 h-3 w-3" />
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
 
-              {/* Portfolio Card 2 */}
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Photography Portfolio</CardTitle>
-                  <div className="flex space-x-2">
-                    <Button variant="ghost" size="icon">
-                      <Edit className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Eye className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Settings className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="aspect-video w-full overflow-hidden rounded-md bg-muted"></div>
-                  <div className="mt-4 space-y-2">
-                    <p className="text-sm text-muted-foreground">Last updated: 1 week ago</p>
-                    <div className="flex justify-between">
-                      <p className="text-sm font-medium">photo-portfolio.portfoliobuilder.com</p>
-                      <Button variant="link" size="sm" className="h-auto p-0">
-                        View <ArrowRight className="ml-1 h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                )
+              })}
+
 
               {/* Create New Portfolio Card */}
               <Card className="flex flex-col items-center justify-center p-8">

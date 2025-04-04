@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -14,8 +14,11 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
 import Stepper from "@/components/Stepper"
+import { toast } from "react-toastify"
 
 export default function CreatePortfolioPage() {
+  const navigate = useNavigate();
+  const baseurl = import.meta.env.VITE_BASE_URL;
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
     title: "",
@@ -121,8 +124,39 @@ export default function CreatePortfolioPage() {
     setExperience(experience.filter((exp) => exp.id !== id))
   }
 
-  const handleSubmit = () =>{
+  const handleSubmit = async () =>{
     console.log({...formData, experience, education, projects})
+    try {
+      const response = await fetch(`${baseurl}/api/portfolio/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem('token')}`, // Include token in Authorization header
+        },
+        body: JSON.stringify({
+          ...formData, experience, education, projects
+        }),
+      });
+
+      if (response.ok) {
+          toast("Portfolio Created successfully", {
+            type: "success",
+          })
+          navigate('/dashboard');
+      } else {
+        const errorData = await response.json();
+        toast("Failed to Create Portfolio",{
+          type: "error"
+        })
+        console.error("Failed to create Portfolio:", errorData.message);
+      }
+      
+    } catch (error) {
+      console.log(error);
+      toast("Failed to Create Portfolio",{
+        type: "error"
+      })
+    }
   }
 
   return (
@@ -361,10 +395,10 @@ export default function CreatePortfolioPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="approach">Your Approach</Label>
+                <Label htmlFor="approch">Your Approach</Label>
                 <Input
-                  id="approach"
-                  name="approach"
+                  id="approch"
+                  name="approch"
                   placeholder="e.g., I believe in clean, maintainable code and thoughtful design that puts users first."
                   value={formData.approch}
                   onChange={handleChange}

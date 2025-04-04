@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const {createUser, loginUser, logoutUser, currentUser} = require('../controller/userController')
 const {isAuthenticated} = require('../Middleware/isAuthenticated');
-const User = require("../model/User");
 
 
 router.post('/register', createUser)

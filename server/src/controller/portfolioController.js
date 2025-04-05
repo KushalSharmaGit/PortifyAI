@@ -69,14 +69,13 @@ const addDomain = asyncHandler(async (req, res) => {
 });
 
 const getDomain = async (req, res) => {
-    const { domain } = req.body;
-    const portfolioId = await Domain.findOne({domain}).select('projectId').lean();
+    const domain = req.params.id;
+    const portfolioId = await Domain.findOne({domain}).select('portfolioId').lean();
     if(!portfolioId){
-        res.status(404).json({
-            "message":"No Portfolio is connected with this domain"
-        })
+        res.status(400)
     }
-    res.status(200).json({ projectId });
+    console.log(portfolioId);
+    res.status(200).json(portfolioId);
 }
 
 

@@ -19,7 +19,7 @@ const DomainPage = () => {
     const navigate = useNavigate();
     const handleAdd = async () =>{
         try {
-              const response = await fetch(`${baseurl}/api/portfolio//domain/${id}`, {
+              const response = await fetch(`${baseurl}/api/portfolio/domain/${id}`, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",

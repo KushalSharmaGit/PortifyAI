@@ -8,7 +8,7 @@ router.post('/create',isAuthenticated, createPortfolio);
 router.get('/dashboard', isAuthenticated, viewDashboard);
 router.get('/view/:id', viewPortfolio);
 router.post('/domain/:id',isAuthenticated, addDomain);
-router.get('/domian', getDomain)
+router.get('/domain-resolve/:id', getDomain);
 
 
 module.exports = router;

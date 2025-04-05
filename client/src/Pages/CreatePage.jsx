@@ -164,7 +164,7 @@ export default function CreatePortfolioPage() {
       <DashboardHeader />
       <div className="container max-w-4xl py-10">
         <div className="mb-8">
-          <Link href="/dashboard" className="flex items-center text-sm text-muted-foreground hover:text-foreground">
+          <Link to="/dashboard" className="flex items-center text-sm text-muted-foreground hover:text-foreground">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Dashboard
           </Link>

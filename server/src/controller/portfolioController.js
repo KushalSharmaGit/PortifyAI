@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Portfolio = require("../model/Portfolio");
+const Domain = require("../model/Domain");
 
 const createPortfolio = asyncHandler ( async (req, res) => {
     const { title, description, name, role, bio, email, phone, location, website, twitter, github, linkedin, approch, skills, interests, experience, education, projects } = req.body;
@@ -43,5 +44,40 @@ const viewDashboard = async (req, res) => {
     }
 };
 
+const addDomain = asyncHandler(async (req, res) => {
+    const { domain } = req.body;
+    console.log(req.body);
+    const portfolioId = req.params.id;
+    console.log(portfolioId);
+    if (!domain || !portfolioId) {
+        return res.status(400).json({
+            message: "Domain name are required"
+        });
+    }
+    const existingDomain = await Domain.findOne({portfolioId});
 
-module.exports = { createPortfolio, viewPortfolio, viewDashboard };
+    if (existingDomain) {
+    return res.status(400).json({ message: "You can only register one domain" });
+    }
+    const domain_name = await Domain.create({ domain, portfolioId });
+    if(domain_name){
+        res.status(201).json({"message": "Domain name registered successfully"});
+    } else {
+        res.status(400).json({"message":"Error registring domain name"});
+    }
+
+});
+
+const getDomain = async (req, res) => {
+    const { domain } = req.body;
+    const portfolioId = await Domain.findOne({domain}).select('projectId').lean();
+    if(!portfolioId){
+        res.status(404).json({
+            "message":"No Portfolio is connected with this domain"
+        })
+    }
+    res.status(200).json({ projectId });
+}
+
+
+module.exports = { createPortfolio, viewPortfolio, viewDashboard, addDomain, getDomain };

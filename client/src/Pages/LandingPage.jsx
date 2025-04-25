@@ -6,7 +6,7 @@ import { HashLink } from "react-router-hash-link";
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import portfolioPreview from '../assets/portfolio-preview.png';
+import portfolioPreview from '../assets/Portfolio-Preview.PNG';
 
 function LandingPage() {
   const navigate = useNavigate();

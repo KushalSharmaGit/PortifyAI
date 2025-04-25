@@ -223,7 +223,9 @@ const PortfolioOne = () => {
                             {projects.map((project, index) => (
                                 <Card key={index} className="overflow-hidden">
                                     <div className="aspect-video relative">
-                                        <img src={project.image || "/placeholder.svg?height=300&width=500"} alt={project.title} className="object-cover" />
+                                        {project.image && (
+                                            <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                                        )}
                                     </div>
                                     <CardHeader>
                                         <CardTitle>{project.title}</CardTitle>

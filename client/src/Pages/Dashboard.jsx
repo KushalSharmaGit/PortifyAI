@@ -74,7 +74,7 @@ const Dashboard = () => {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="aspect-video w-full overflow-hidden rounded-md bg-muted"><img src={portfolioPreview} alt="Portfolio Preview" className="w-full h-full object-cover" /></div>
+                      <div className="aspect-video w-full overflow-hidden rounded-md bg-muted"><img src={portfoliopreview} alt="Portfolio Preview" className="w-full h-full object-cover" /></div>
                       <div className="mt-4 space-y-2">
                        
                         <div className="flex justify-between">

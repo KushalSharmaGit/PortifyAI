@@ -404,24 +404,24 @@ const PortfolioOne = () => {
                         © {new Date().getFullYear()} {portfolio.name}. All rights reserved.
                     </p>
                     <div className="flex gap-4">
-                        <Link to={portfolio.github} target="_blank" rel="noopener noreferrer">
+                        <a href={portfolio.github} target="_blank" rel="noopener noreferrer">
                             <Button variant="ghost" size="icon">
                                 <Github className="h-4 w-4" />
                                 <span className="sr-only">GitHub</span>
                             </Button>
-                        </Link>
-                        <Link to={portfolio.linkedin} target="_blank" rel="noopener noreferrer">
+                        </a>
+                        <a href={portfolio.linkedin} target="_blank" rel="noopener noreferrer">
                             <Button variant="ghost" size="icon">
                                 <Linkedin className="h-4 w-4" />
                                 <span className="sr-only">LinkedIn</span>
                             </Button>
-                        </Link>
-                        <Link to={portfolio.twitter} target="_blank" rel="noopener noreferrer">
+                        </a>
+                        <a href={portfolio.twitter} target="_blank" rel="noopener noreferrer">
                             <Button variant="ghost" size="icon">
                                 <Twitter className="h-4 w-4" />
                                 <span className="sr-only">Twitter</span>
                             </Button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </footer>

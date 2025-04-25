@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, Edit, Eye, Plus, Settings } from "lucide-react"
 import DashboardHeader from '../components/DashboardHeader'
 import { useNavigate } from 'react-router-dom'
-import portfolioPreview from '@/assets/portfolio-preview.png';
+import portfoliopreview from '../assets/portfoliopreview.png';
 
 const Dashboard = () => {
     const navigate = useNavigate()

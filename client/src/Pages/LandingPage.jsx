@@ -6,7 +6,7 @@ import { HashLink } from "react-router-hash-link";
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import portfolioPreview from '../assets/Portfolio-Preview.PNG';
+import portfoliopreview from '../assets/portfoliopreview.png';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ function LandingPage() {
                   <div className="relative aspect-[16/10] bg-gray-200">
                     <div className="absolute inset-0 flex items-center justify-center">
                       {/* <span className="text-gray-500">Portfolio Preview</span> */}
-                      <img src={portfolioPreview} alt="Portfolio Preview" className="w-full h-full object-cover" />
+                      <img src={portfoliopreview} alt="Portfolio Preview" className="w-full h-full object-cover" />
                     </div>
                   </div>
                 </div>

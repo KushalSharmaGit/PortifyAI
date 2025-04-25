@@ -23,9 +23,10 @@ const DnsRecordTable = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">A</TableCell>
-              <TableCell>@</TableCell>
-              <TableCell>76.76.21.21</TableCell>
+              <TableCell className="font-medium">CNAME</TableCell>
+              <TableCell>www</TableCell>
+              <TableCell>portify-portfolio-builder-reverse-proxy.vercel.app
+              </TableCell>
               <TableCell>3600</TableCell>
               <TableCell>
                 <Button variant="ghost" size="icon" onClick={() => copyToClipboard("76.76.21.21")}>

@@ -6,7 +6,7 @@ import { HashLink } from "react-router-hash-link";
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import portfolioPreview from '@/assets/portfolio-preview.png';
+import portfolioPreview from '../assets/portfolio-preview.png';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -56,8 +56,8 @@ function LandingPage() {
                   <Button size="lg" className="text-base px-8 h-12 hover:cursor-pointer" onClick={handleStarted}>
                     Get Started Free
                   </Button>
-                  <Button size="lg" variant="outline" className="text-base px-8 h-12 hover:cursor-pointer" onClick={() => window.scrollTo({ top: document.querySelector("#examples").offsetTop, behavior: "smooth" })}>
-                    See Examples
+                  <Button size="lg" variant="outline" className="text-base px-8 h-12 hover:cursor-pointer" onClick={() => window.scrollTo({ top: document.querySelector("#features").offsetTop, behavior: "smooth" })}>
+                    See Features
                   </Button>
                 </div>
               </div>

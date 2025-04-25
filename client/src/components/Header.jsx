@@ -30,9 +30,6 @@ const Header = () => {
             <HashLink to="#how-it-works" className="text-sm font-medium transition-colors hover:text-primary" smooth>
               How It Works
             </HashLink>
-            <HashLink to="#examples" className="text-sm font-medium transition-colors hover:text-primary" smooth>
-              Examples
-            </HashLink>
             <HashLink to="#pricing" className="text-sm font-medium transition-colors hover:text-primary" smooth>
               Pricing
             </HashLink>

@@ -31,7 +31,7 @@ const Header = () => {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Layers className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">PortfolioAI</span>
+            <span className="text-xl font-bold">PortifyAI</span>
           </div>
           <nav className="hidden md:flex gap-6">
             <HashLink to="#features" className="text-sm font-medium transition-colors hover:text-primary hover:cursor-pointer" smooth>

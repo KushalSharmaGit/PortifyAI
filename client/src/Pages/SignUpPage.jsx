@@ -62,7 +62,7 @@ const SignUpPage = () => {
               <div className="flex flex-col items-center space-y-2 text-center">
                 <Link to="/" className="flex items-center gap-2">
                   <Layers className="h-8 w-8 text-primary" />
-                  <span className="text-2xl font-bold">PortfolioAI</span>
+                  <span className="text-2xl font-bold">PortifyAI</span>
                 </Link>
                 <h1 className="text-2xl font-bold">Welcome</h1>
                 <p className="text-sm text-muted-foreground">Enter your credentials to create your account</p>

@@ -242,7 +242,7 @@ function LandingPage() {
                 <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Testimonials</div>
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">What our users are saying</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join thousands of professionals who have transformed their online presence with PortfolioAI.
+                  Join thousands of professionals who have transformed their online presence with PortifyAI.
                 </p>
               </div>
             </div>
@@ -265,7 +265,7 @@ function LandingPage() {
                     ))}
                   </div>
                   <p className="text-muted-foreground">
-                    "I spent weeks trying to build my own portfolio before finding PortfolioAI. Within 10 minutes, I had
+                    "I spent weeks trying to build my own portfolio before finding PortifyAI. Within 10 minutes, I had
                     a professional site that perfectly showcased my work. Landed a new client the next day!"
                   </p>
                 </div>
@@ -298,7 +298,7 @@ function LandingPage() {
                   </div>
                   <p className="text-muted-foreground">
                     "As a developer, I wanted a portfolio that showed my skills without spending days coding it.
-                    PortfolioAI delivered exactly what I needed with minimal effort. The customization options are
+                    PortifyAI delivered exactly what I needed with minimal effort. The customization options are
                     fantastic."
                   </p>
                 </div>
@@ -380,7 +380,7 @@ function LandingPage() {
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                    <span>PortfolioAI subdomain</span>
+                    <span>PortifyAI subdomain</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-primary" />
@@ -482,7 +482,7 @@ function LandingPage() {
                   Ready to create your portfolio?
                 </h2>
                 <p className="max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join thousands of professionals who have transformed their online presence with PortfolioAI.
+                  Join thousands of professionals who have transformed their online presence with PortifyAI.
                 </p>
               </div>
               <div className="mx-auto w-full max-w-sm space-y-2">

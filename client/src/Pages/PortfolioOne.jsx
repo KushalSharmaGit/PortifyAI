@@ -57,7 +57,7 @@ const PortfolioOne = () => {
             <div className="container flex h-16 items-center justify-between">
                 <div className="font-bold text-xl">
                 <Link to="/" className="flex items-center gap-2">
-                    <span>PortfolioAI</span>
+                    <span>PortifyAI</span>
                 </Link>
                 </div>
                 <nav className="hidden md:flex gap-6">

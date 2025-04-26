@@ -11,7 +11,7 @@ const CommingSoon = () => {
               <div className="flex items-center gap-2">
                 <Link to="/" className="flex items-center gap-2">
                   <Layers className="h-6 w-6 text-primary" />
-                  <span className="text-xl font-bold">PortfolioAI</span>
+                  <span className="text-xl font-bold">PortifyAI</span>
                 </Link>
               </div>
             </div>
@@ -51,10 +51,10 @@ const CommingSoon = () => {
             <div className="container flex flex-col items-center justify-center gap-4 text-center">
               <div className="flex items-center gap-2">
                 <Layers className="h-5 w-5 text-primary" />
-                <span className="text-lg font-bold">PortfolioAI</span>
+                <span className="text-lg font-bold">PortifyAI</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} PortfolioAI. All rights reserved.
+                © {new Date().getFullYear()} PortifyAI. All rights reserved.
               </p>
             </div>
           </footer>

@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const connectDb = async () => {
     try {
         const connect = await mongoose.connect(process.env.MONGODB_URI, {
-            maxPoolSize: 10, // Set the connection pool size (adjust as per your app's needs)
+            maxPoolSize: 50, // Set the connection pool size (adjust as per your app's needs)
         });
 
         console.log(

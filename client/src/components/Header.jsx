@@ -10,7 +10,7 @@ const Header = () => {
     const [toggle, setToggle] = useState(false);
     const handleStarted = () => {
         if(localStorage.getItem("token")) navigate("/create");
-        else navigate("/login");
+        else navigate("/signup");
     }
     const handleLogOut = () => {
       localStorage.clear('token');

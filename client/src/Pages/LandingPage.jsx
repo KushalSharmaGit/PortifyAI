@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import portfoliopreview from '../assets/portfoliopreview.png';
+import Hero from '@/components/Hero';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function LandingPage() {
       <Header />
 
       <main className="flex-1">
-        <section className="relative w-full overflow-hidden py-20 md:py-32 lg:py-40 xl:py-48">
+        {/* <section className="relative w-full overflow-hidden py-20 md:py-32 lg:py-40 xl:py-48">
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background/0 z-0"></div>
           <div className="absolute top-0 right-0 w-full h-full bg-grid-white/[0.02] [mask-image:radial-gradient(ellipse_at_top_right,transparent_50%,black)]"></div>
 
@@ -74,7 +75,7 @@ function LandingPage() {
                   </div>
                   <div className="relative aspect-[16/10] bg-gray-200">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      {/* <span className="text-gray-500">Portfolio Preview</span> */}
+                      
                       <img src={portfoliopreview} alt="Portfolio Preview" className="w-full h-full object-cover" />
                     </div>
                   </div>
@@ -85,8 +86,8 @@ function LandingPage() {
               </div>
             </div>
           </div>
-        </section>
-
+        </section> */}
+        <Hero />
         <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">

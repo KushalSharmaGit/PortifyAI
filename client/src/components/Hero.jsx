@@ -1,7 +1,9 @@
 import React from 'react'
 import { Button } from '@/components/ui/button';
 import portfoliopreview from '../assets/portfoliopreview.png';
+import { useNavigate } from 'react-router-dom';
 const Hero = () => {
+    const navigate = useNavigate();
     const handleStarted = () => {
         if(localStorage.getItem("token")) navigate("/dashboard");
         else navigate("/login");

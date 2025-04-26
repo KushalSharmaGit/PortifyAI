@@ -1,9 +1,19 @@
 import {React, useState} from 'react'
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import {  User, Layers } from 'lucide-react';
+import { Layers } from 'lucide-react';
 import { HashLink } from "react-router-hash-link";
 import { useNavigate } from 'react-router-dom';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 
 const Header = () => {
     const navigate = useNavigate();
@@ -37,8 +47,20 @@ const Header = () => {
           <div className="flex items-center gap-4">
             {localStorage.getItem('token') ? 
             (<>
-            <User className="h-5 w-5" />
-            <Button className="hover:cursor-pointer" onClick={handleLogOut}>Log Out</Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger><Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => {navigate('/dashboard')}}>Dashboard</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => {navigate('/create')}}>Create Portfolio</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogOut}>Log Out</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             </>
             ) 
             :

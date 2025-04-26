@@ -50,10 +50,7 @@ function LoginPage() {
       }
       const data = await response.json();
       localStorage.setItem('token', data.token);
-      toast("Login successful", {
-        type: "success",
-      });
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       toast(error, {
         type: "error",

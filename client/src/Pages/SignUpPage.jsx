@@ -39,7 +39,7 @@ const SignUpPage = () => {
             if(!response.ok){
                 setIsLoading(false);
                 const data = await response.json();
-                toast(data.error.message, {
+                toast(data.message, {
                     type: "error",
                 });
                 return;

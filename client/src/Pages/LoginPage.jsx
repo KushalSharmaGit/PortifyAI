@@ -33,7 +33,7 @@ function LoginPage() {
     e.preventDefault()
     setIsLoading(true);
     try {
-      const response= await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/login`, {
+        const response= await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/login`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -41,18 +41,20 @@ function LoginPage() {
         },
         body: JSON.stringify(user),
       });
+      const data = await response.json();
       if(!response.ok){
         setIsLoading(false);
-        toast(response.error.message, {
+        toast(data.message, {
           type: "error",
         });
         return;
       }
-      const data = await response.json();
       localStorage.setItem('token', data.token);
       navigate('/dashboard');
     } catch (error) {
-      toast(error, {
+      setIsLoading(false);
+      console.error("Error logging in:", error);
+      toast(response.error.message, {
         type: "error",
       });
     }

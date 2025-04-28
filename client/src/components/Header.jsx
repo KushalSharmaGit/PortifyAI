@@ -49,16 +49,16 @@ const Header = () => {
             (<>
             <DropdownMenu>
               <DropdownMenuTrigger><Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarImage src="https://github.com/shadcn.png" className="hover:cursor-pointer"/>
                 <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => {navigate('/dashboard')}}>Dashboard</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => {navigate('/create')}}>Create Portfolio</DropdownMenuItem>
-                <DropdownMenuItem onClick={handleLogOut}>Log Out</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => {navigate('/dashboard')}} className="hover:cursor-pointer">Dashboard</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => {navigate('/create')}} className="hover:cursor-pointer">Create Portfolio</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogOut} className="hover:cursor-pointer">Log Out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             </>
